@@ -72,20 +72,20 @@
 						</VisualStateManager.VisualStateGroups>
 
 						<ContentPresenter x:Name="ContentPresenter"
+										  Foreground="{TemplateBinding Foreground}"
 										  Content="{TemplateBinding Content}"
 										  ContentTransitions="{TemplateBinding ContentTransitions}"
 										  ContentTemplate="{TemplateBinding ContentTemplate}"
-										  Margin="{TemplateBinding Padding}"
-										  Foreground="{TemplateBinding Foreground}"
-										  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
 										  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+										  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+										  Margin="{TemplateBinding Padding}"
 										  AutomationProperties.AccessibilityView="Raw" />
 
 						<Rectangle x:Name="BorderElement"
-								   HorizontalAlignment="Stretch"
-								   VerticalAlignment="Bottom"
+								   Fill="Transparent"
 								   Height="3"
-								   Fill="Transparent" />
+								   HorizontalAlignment="Stretch"
+								   VerticalAlignment="Bottom" />
 					</Grid>
 				</ControlTemplate>
 			</Setter.Value>
@@ -112,7 +112,7 @@
 		<Setter Property="UseSystemFocusVisuals"
 				Value="True" />
 		<Setter Property="Padding"
-				Value="35,0, 14,0" />
+				Value="35,0,14,0" />
 		<Setter Property="Margin"
 				Value="0" />
 		<Setter Property="FontWeight"
@@ -121,10 +121,10 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="RadioButton">
 					<Grid x:Name="RootBorder"
-						  Height="{TemplateBinding Height}"
 						  Background="{TemplateBinding Background}"
 						  BorderBrush="{TemplateBinding BorderBrush}"
-						  BorderThickness="{TemplateBinding BorderThickness}">
+						  BorderThickness="{TemplateBinding BorderThickness}"
+						  Height="{TemplateBinding Height}">
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup x:Name="CommonStates">
 								<VisualState x:Name="Normal" />
@@ -157,22 +157,22 @@
 								<VisualState x:Name="PointerFocused" />
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
-					
+
 						<ContentPresenter x:Name="ContentPresenter"
 										  ContentTemplate="{TemplateBinding ContentTemplate}"
 										  ContentTransitions="{TemplateBinding ContentTransitions}"
 										  Content="{TemplateBinding Content}"
-										  Margin="{TemplateBinding Padding}"
 										  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-										  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+										  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+										  Margin="{TemplateBinding Padding}" />
 
 						<Rectangle x:Name="Border"
-								   HorizontalAlignment="Left"
-								   VerticalAlignment="Stretch"
-								   Width="4"
 								   Fill="{StaticResource Color04Brush}"
 								   Visibility="Collapsed"
-								   IsHitTestVisible="False" />
+								   IsHitTestVisible="False"
+								   Width="4"
+								   HorizontalAlignment="Left"
+								   VerticalAlignment="Stretch" />
 					</Grid>
 				</ControlTemplate>
 			</Setter.Value>

@@ -109,32 +109,29 @@
 										  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
 
 						<!-- The chevron is collapsed if only one item exists in the combobox -->
-						<Grid HorizontalAlignment="Right"
+						<Grid Visibility="{Binding ItemsSource, Converter={StaticResource EnumerableHasMinimumToVisible}, RelativeSource={RelativeSource Mode=TemplatedParent}, FallbackValue=Visible}"
+							  HorizontalAlignment="Right"
 							  VerticalAlignment="Center"
-							  Margin="0,0,24,0"
-							  Visibility="{Binding ItemsSource, Converter={StaticResource EnumerableHasMinimumToVisible}, RelativeSource={RelativeSource Mode=TemplatedParent}, FallbackValue=Visible}">
+							  Margin="0,0,24,0">
 
 							<Path Data="M6,4.88756313 L10.5367656,0.256281566 C10.8715007,-0.0854271888 11.4142136,-0.0854271888 11.7489487,0.256281566 C12.0836838,0.597990322 12.0836838,1.15200968 11.7489487,1.49371843 L6.60609153,6.74371843 C6.27135642,7.08542719 5.72864358,7.08542719 5.39390847,6.74371843 L0.25105133,1.49371843 C-0.0836837768,1.15200968 -0.0836837768,0.597990322 0.25105133,0.256281566 C0.585786438,-0.0854271888 1.12849928,-0.0854271888 1.46323438,0.256281566 L6,4.88756313 Z"
 								  Fill="{StaticResource Color05Brush}"
-								  VerticalAlignment="Center"
-								  Height="12"
-								  Width="12"
 								  IsHitTestVisible="False"
+								  Width="12"
+								  Height="12"
+								  VerticalAlignment="Center"
 								  Margin="0,8,0,0" />
 						</Grid>
 
 						<Popup x:Name="Popup">
 							<Border x:Name="PopupBorder"
+									Background="{StaticResource Color02Brush}"
 									BorderThickness="0,1"
 									BorderBrush="{StaticResource Color07Brush}"
-									Background="{StaticResource Color02Brush}"
 									HorizontalAlignment="Stretch">
 								<ScrollViewer x:Name="ScrollViewer"
-											  MaxHeight="{StaticResource ComboBoxPopupMaxHeight}"
 											  Foreground="{StaticResource Color01Brush}"
-											  MinWidth="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.DropDownContentMinWidth}"
 											  VerticalSnapPointsType="OptionalSingle"
-											  VerticalSnapPointsAlignment="Near"
 											  HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}"
 											  HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
 											  VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}"
@@ -144,6 +141,9 @@
 											  IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
 											  BringIntoViewOnFocusChange="{TemplateBinding ScrollViewer.BringIntoViewOnFocusChange}"
 											  ZoomMode="Disabled"
+											  MinWidth="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.DropDownContentMinWidth}"
+											  MaxHeight="{StaticResource ComboBoxPopupMaxHeight}"
+											  VerticalSnapPointsAlignment="Near"
 											  AutomationProperties.AccessibilityView="Raw">
 									<ItemsPresenter />
 								</ScrollViewer>

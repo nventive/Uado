@@ -1,14 +1,14 @@
 ﻿<Page x:Class="Uno.AzureDevOps.Views.Content.ProjectListPage"
 	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	  xmlns:local="using:Uno.AzureDevOps.Views.Content"
 	  xmlns:uc="using:Uno.AzureDevOps.Views.Controls"
-	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	  xmlns:wasm="http:/uno.ui/wasm"
-	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  xmlns:beh="using:Uno.AzureDevOps.Views.Behaviors"
 	  xmlns:toolkit="using:Uno.UI.Toolkit"
 	  xmlns:controls="using:Uno.AzureDevOps.Views.Controls"
+	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:wasm="http:/uno.ui/wasm"
 	  mc:Ignorable="wasm">
 
 	<Page.Resources>
@@ -23,9 +23,9 @@
 
 					<!-- Name -->
 					<Grid Background="{Binding Text, ElementName=Initials, Converter={StaticResource InitialsColor}}"
-						  Height="29"
-						  Width="29"
 						  CornerRadius="4"
+						  Width="29"
+						  Height="29"
 						  VerticalAlignment="Center"
 						  Margin="16,0,0,0">
 						<TextBlock x:Name="Initials"
@@ -37,17 +37,17 @@
 					<!-- Name -->
 					<TextBlock Text="{Binding Name}"
 							   Style="{StaticResource Typo08}"
-							   VerticalAlignment="Center"
 							   TextWrapping="NoWrap"
 							   MaxLines="1"
+							   VerticalAlignment="Center"
 							   Margin="14,0,26,0"
 							   Grid.Column="1" />
 
 					<!-- Chevron -->
 					<Path Data="M4.88756313,6 L0.256281566,1.46323438 C-0.0854271888,1.12849928 -0.0854271888,0.585786438 0.256281566,0.25105133 C0.597990322,-0.0836837768 1.15200968,-0.0836837768 1.49371843,0.25105133 L6.74371843,5.39390847 C7.08542719,5.72864358 7.08542719,6.27135642 6.74371843,6.60609153 L1.49371843,11.7489487 C1.15200968,12.0836838 0.597990322,12.0836838 0.256281566,11.7489487 C-0.0854271888,11.4142136 -0.0854271888,10.8715007 0.256281566,10.5367656 L4.88756313,6 Z"
 						  Fill="{StaticResource Color05Brush}"
-						  VerticalAlignment="Center"
 						  HorizontalAlignment="Right"
+						  VerticalAlignment="Center"
 						  Margin="0,0,26,2"
 						  Grid.Column="2" />
 				</Grid>
@@ -73,7 +73,7 @@
 			<ColumnDefinition x:Name="MainGridViewColumn_2"
 							  Width="0" />
 		</Grid.ColumnDefinitions>
-		
+
 		<VisualStateManager.VisualStateGroups>
 			<VisualStateGroup>
 				<VisualState x:Name="wide">
@@ -114,15 +114,15 @@
 
 		<!-- PAGE HEADER -->
 		<controls:PageHeader x:Name="HeaderView"
-							 Grid.Column="0"
-							 Grid.ColumnSpan="2"
 							 Title="All projects"
 							 HamburgerClick="HamburgerButton_Click"
+							 Grid.Column="0"
+							 Grid.ColumnSpan="2"
 							 beh:FullscreenSideMenuBehavior.IsFullscreenMenu="{Binding IsFullscreenMenu, ElementName=LargeViewNavigation}"
 							 beh:FullscreenSideMenuBehavior.MenuVisibility="{Binding MenuVisibility, ElementName=LargeViewNavigation}" />
 
-		<Grid Grid.Row="1"
-			  x:Name="ContentView">
+		<Grid x:Name="ContentView"
+			  Grid.Row="1">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
@@ -132,14 +132,14 @@
 
 				<!-- Loading -->
 				<Grid Visibility="{Binding Projects.IsExecuting, Converter={StaticResource TrueToVisible}, FallbackValue=Collapsed}">
-					<StackPanel VerticalAlignment="Center"
-								HorizontalAlignment="Center">
+					<StackPanel HorizontalAlignment="Center"
+								VerticalAlignment="Center">
 
 						<!-- Progress Ring -->
-						<ProgressRing IsActive="True"
-									  Foreground="{StaticResource Color03Brush}"
-									  Height="20"
+						<ProgressRing Foreground="{StaticResource Color03Brush}"
+									  IsActive="True"
 									  Width="20"
+									  Height="20"
 									  HorizontalAlignment="Center"
 									  VerticalAlignment="Center"
 									  Margin="0,12" />
@@ -156,16 +156,16 @@
 					<!-- Message -->
 					<TextBlock Text="{Binding Projects.IsInternetFaulted, Converter={StaticResource BoolToCustomString}}"
 							   Style="{StaticResource Typo10}"
+							   TextAlignment="Center"
 							   HorizontalAlignment="Center"
 							   VerticalAlignment="Center"
-							   TextAlignment="Center"
 							   Margin="50,0,50,48" />
 
 					<!-- Reload button -->
 					<Button x:Name="ReloadButton"
+							Style="{StaticResource ReloadButtonStyle}"
 							Content="Reload"
 							Command="{Binding ReloadPage}"
-							Style="{StaticResource ReloadButtonStyle}"
 							VerticalAlignment="Bottom"
 							Margin="16,22" />
 				</Grid>
@@ -181,8 +181,8 @@
 
 					<!-- Empty List Message -->
 					<TextBlock Text="No projects"
-							   Visibility="{Binding Projects.Result, Converter={StaticResource EnumerableHasAnyToCollapsed}, FallbackValue=Collapsed}"
 							   Style="{StaticResource Typo15}"
+							   Visibility="{Binding Projects.Result, Converter={StaticResource EnumerableHasAnyToCollapsed}, FallbackValue=Collapsed}"
 							   VerticalAlignment="Top"
 							   Margin="16,0" />
 				</Grid>
@@ -192,13 +192,13 @@
 		<!-- Side hamburger menu -->
 		<!-- Setting a default margin top as adaptive trigger on row/rowspan does not work -->
 		<uc:SideMenu x:Name="LargeViewNavigation"
-					 NavLevel="Projects"
 					 Background="{StaticResource Color06Brush}"
+					 NavLevel="Projects"
 					 MenuVisibility="Collapsed"
 					 IsFullscreenMenu="True"
+					 HorizontalAlignment="Stretch"
 					 Grid.Row="1"
-					 Grid.RowSpan="1"
-					 HorizontalAlignment="Stretch" />
+					 Grid.RowSpan="1" />
 
 		<!-- Close Button -->
 		<Border x:Name="CloseButton"

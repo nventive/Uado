@@ -1,14 +1,14 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 					xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-					xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 					xmlns:behaviors="using:Uno.AzureDevOps.Views.Behaviors"
+					xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 					mc:Ignorable="">
 
 	<!--
-	******************************************************************
+		******************************************************************
 		DEFAULT TEXTBLOCK STYLE
-	******************************************************************
+		******************************************************************
 	-->
 
 	<!-- Do not add FontFamily, FontWeight, Foreground or FontSize properties on the default style -->
@@ -26,9 +26,9 @@
 	</Style>
 
 	<!--
-	******************************************************************
+		******************************************************************
 		STYLE GUIDE TEXTBLOCKS STYLES
-	******************************************************************
+		******************************************************************
 	-->
 
 	<Style x:Key="Typo01"
@@ -250,7 +250,7 @@
 		<Setter Property="Foreground"
 				Value="{StaticResource Color05Brush}" />
 	</Style>
-	
+
 	<Style x:Key="Typo19"
 		   TargetType="TextBlock"
 		   BasedOn="{StaticResource DefaultTextBlockStyle}">
@@ -308,11 +308,11 @@
 		   TargetType="TextBlock"
 		   BasedOn="{StaticResource DefaultTextBlockStyle}">
 		<Setter Property="behaviors:HtmlTextBlockBehavior.DisableLinks"
-				Value="True"/>
+				Value="True" />
 		<Setter Property="behaviors:HtmlTextBlockBehavior.HeaderFontSize"
-				Value="15"/>
+				Value="15" />
 		<Setter Property="behaviors:HtmlTextBlockBehavior.BoldFontFamily"
-				Value="{StaticResource FontFamily01Bold}"/>
+				Value="{StaticResource FontFamily01Bold}" />
 
 		<Setter Property="Foreground"
 				Value="{StaticResource Color01Brush}" />

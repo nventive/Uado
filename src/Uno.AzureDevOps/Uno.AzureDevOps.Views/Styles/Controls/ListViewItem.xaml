@@ -4,7 +4,7 @@
 					xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 					mc:Ignorable="">
 
-	<!-- 
+	<!--
 		Find the latest styles here:
 		C:\Program Files (x86)\Windows Kits\10\DesignTime\CommonConfiguration\Neutral\UAP\10.0.14393.0\Generic\generic.xaml
 	-->
@@ -33,7 +33,7 @@
 				Value="0" />
 		<Setter Property="Margin"
 				Value="0" />
-		
+
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="ListViewItem">
@@ -70,12 +70,12 @@
 						</VisualStateManager.VisualStateGroups>
 
 						<ContentPresenter x:Name="ContentPresenter"
+										  Content="{TemplateBinding Content}"
 										  ContentTemplate="{TemplateBinding ContentTemplate}"
 										  ContentTransitions="{TemplateBinding ContentTransitions}"
-										  Content="{TemplateBinding Content}"
 										  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-										  Margin="{TemplateBinding Padding}"
-										  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+										  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+										  Margin="{TemplateBinding Padding}" />
 					</Border>
 				</ControlTemplate>
 			</Setter.Value>
@@ -84,14 +84,14 @@
 
 	<Style x:Key="LargeListItemStyle"
 		   TargetType="ListViewItem">
-		
+
 		<Setter Property="Background"
 				Value="{StaticResource TransparentColorBrush}" />
 		<Setter Property="Width"
 				Value="250" />
 		<Setter Property="Height"
 				Value="300" />
-		
+
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="ListViewItem">
@@ -115,8 +115,8 @@
 						</VisualStateManager.VisualStateGroups>
 
 						<Border x:Name="BackgroundBorder"
-								CornerRadius="10"
 								Background="{TemplateBinding Background}"
+								CornerRadius="10"
 								Width="{TemplateBinding Width}"
 								Height="{TemplateBinding Height}">
 							<ContentPresenter Content="{TemplateBinding Content}"

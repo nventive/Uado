@@ -8,13 +8,13 @@
 
 	<converters:BoolToVisibilityConverter x:Key="TrueToCollapsed"
 										  IsVisibleIfTrue="False" />
-	
+
 	<converters:FromVisibilityToValueConverter x:Key="InverseVisible"
 											   VisibleValue="Collapsed"
 											   CollapsedValue="Visible" />
 
 	<converters:FromNullableBoolToReverseBoolConverter x:Key="BoolToInvertBool" />
-	
+
 	<converters:ProjectViewToBoolConverter x:Key="ProjectViewToIsCheckedConverter" />
 
 	<converters:FromDateToStringConverter x:Key="DateToISODate"
@@ -32,12 +32,12 @@
 
 	<converters:FromEnumerableHasAnyToVisibilityConverter x:Key="EnumerableHasAnyToCollapsed"
 														  VisibilityOnEnumerableHasAny="Collapsed"
-														  VisibilityOnEnumerableNull="Collapsed"/>
+														  VisibilityOnEnumerableNull="Collapsed" />
 
 	<converters:FromEnumerableHasMinimumToValueConverter x:Key="EnumerableHasMinimumToVisible"
-														  Minimum="2"
-														  EnumerableHasMinimumValue="Visible"
-														  EnumerableDefaultValue="Collapsed" />
+														 Minimum="2"
+														 EnumerableHasMinimumValue="Visible"
+														 EnumerableDefaultValue="Collapsed" />
 
 	<converters:FromEnumerableHasMinimumToValueConverter x:Key="EnumerableHasMinimumToTrue"
 														 Minimum="2"
@@ -52,10 +52,10 @@
 
 	<converters:FromBoolToCustomStringConverter x:Key="BoolToCustomString"
 												ErrorInternal="An error occured, please reload to try again"
-												ErrorNoInternetConnection="No connection detected, please check your device settings to ensure a network connection is setup."/>
-	
+												ErrorNoInternetConnection="No connection detected, please check your device settings to ensure a network connection is setup." />
+
 	<converters:InitialsConverter x:Key="MemberInitials" />
 
 	<converters:InitialsColoverConverter x:Key="InitialsColor" />
-	
+
 </ResourceDictionary>

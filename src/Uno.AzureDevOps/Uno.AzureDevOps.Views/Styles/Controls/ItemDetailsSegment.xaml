@@ -68,15 +68,15 @@
 							</Grid>
 
 							<!-- Content -->
-							<TextBlock behaviors:HtmlTextBlockBehavior.HtmlText="{TemplateBinding TextContent}"
-									   Style="{StaticResource HtmlTextBlock}"
+							<TextBlock Style="{StaticResource HtmlTextBlock}"
 									   Margin="16,8,16,16"
-									   Grid.Row="1" />
+									   Grid.Row="1"
+									   behaviors:HtmlTextBlockBehavior.HtmlText="{TemplateBinding TextContent}" />
 
 							<!-- No Content -->
 							<TextBlock Text="{TemplateBinding EmptyContentString}"
-									   Visibility="{Binding TextContent, Converter={StaticResource EmptyStringToVisible}, RelativeSource={RelativeSource TemplatedParent}, FallbackValue=Collapsed}"
 									   Style="{StaticResource Typo15}"
+									   Visibility="{Binding TextContent, Converter={StaticResource EmptyStringToVisible}, RelativeSource={RelativeSource TemplatedParent}, FallbackValue=Collapsed}"
 									   Margin="16,8,16,16"
 									   Grid.Row="1" />
 						</Grid>

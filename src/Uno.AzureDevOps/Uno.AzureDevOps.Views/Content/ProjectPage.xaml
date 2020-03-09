@@ -5,10 +5,10 @@
 	  xmlns:xamarin="http://nventive.com/xamarin"
 	  xmlns:toolkit="using:Uno.UI.Toolkit"
 	  xmlns:uc="using:Uno.AzureDevOps.Views.Controls"
-	  xmlns:wasm="http:/uno.ui/wasm"
-	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  xmlns:beh="using:Uno.AzureDevOps.Views.Behaviors"
 	  xmlns:controls="using:Uno.AzureDevOps.Views.Controls"
+	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:wasm="http:/uno.ui/wasm"
 	  mc:Ignorable="xamarin wasm">
 
 	<Page.Resources>
@@ -33,15 +33,16 @@
 		<!-- Sprint ComboBoxItem Style -->
 		<DataTemplate x:Key="SprintComboBoxItemTemplate">
 			<Grid Background="{StaticResource Color02Brush}"
-				  HorizontalAlignment="Stretch"
 				  BorderBrush="{StaticResource Color07Brush}"
 				  BorderThickness="0,0,0,1"
 				  win:Margin="0,0,0,1"
+				  HorizontalAlignment="Stretch"
 				  Padding="16,8">
 				<StackPanel VerticalAlignment="Center">
 					<!-- Name -->
-					<TextBlock Text="{Binding Name}" Margin="0,0,0,3"
-							   Style="{StaticResource Typo03}" />
+					<TextBlock Text="{Binding Name}"
+							   Style="{StaticResource Typo03}"
+							   Margin="0,0,0,3" />
 
 					<!-- TimeSpan -->
 					<StackPanel Orientation="Horizontal"
@@ -71,25 +72,25 @@
 					<!-- Icon -->
 					<Path Data="{Binding Item.WorkItemType, Converter={StaticResource WorkItemTypeToIconPath}}"
 						  Fill="{Binding Item.WorkItemType, Converter={StaticResource WorkItemTypeToIconColor}}"
-						  Height="24"
 						  Width="17"
+						  Height="24"
 						  VerticalAlignment="Center"
 						  Margin="18,8,0,0" />
 
 					<!-- Title -->
 					<TextBlock Text="{Binding Item.Title}"
 							   Style="{StaticResource Typo05}"
+							   TextWrapping="NoWrap"
 							   MaxLines="1"
 							   VerticalAlignment="Center"
-							   TextWrapping="NoWrap"
 							   Margin="10,0"
 							   Grid.Column="1">
 					</TextBlock>
 				</Grid>
 
 				<!-- Separator -->
-				<Rectangle Height="1"
-						   Fill="{StaticResource Color07Brush}"
+				<Rectangle Fill="{StaticResource Color07Brush}"
+						   Height="1"
 						   Margin="0,1,0,0" />
 			</StackPanel>
 		</DataTemplate>
@@ -182,17 +183,17 @@
 
 		<!-- PAGE HEADER -->
 		<controls:PageHeader x:Name="HeaderView"
-							 Grid.Column="0"
-							 Grid.ColumnSpan="2"
 							 Title="{Binding CurrentProject.Name}"
 							 ProjectInitialsVisibility="Visible"
 							 HamburgerClick="HamburgerButton_Click"
+							 Grid.Column="0"
+							 Grid.ColumnSpan="2"
 							 beh:FullscreenSideMenuBehavior.IsFullscreenMenu="{Binding IsFullscreenMenu, ElementName=LargeViewNavigation}"
 							 beh:FullscreenSideMenuBehavior.MenuVisibility="{Binding MenuVisibility, ElementName=LargeViewNavigation}" />
 
-		<Grid Grid.Row="1"
-			  Grid.Column="0"
-			  x:Name="ContentView">
+		<Grid x:Name="ContentView"
+			  Grid.Row="1"
+			  Grid.Column="0">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
@@ -200,14 +201,14 @@
 			<!-- Loading State -->
 			<Grid Visibility="{Binding IterationWorkItems.IsExecuting, Converter={StaticResource TrueToVisible}, FallbackValue=Collapsed, TargetNullValue=Collapsed}">
 
-				<StackPanel VerticalAlignment="Center"
-							HorizontalAlignment="Center">
+				<StackPanel HorizontalAlignment="Center"
+							VerticalAlignment="Center">
 
 					<!-- Progress Ring -->
-					<ProgressRing IsActive="True"
-								  Foreground="{StaticResource Color03Brush}"
-								  Height="20"
+					<ProgressRing Foreground="{StaticResource Color03Brush}"
+								  IsActive="True"
 								  Width="20"
+								  Height="20"
 								  HorizontalAlignment="Center"
 								  VerticalAlignment="Center"
 								  Margin="0,12" />
@@ -224,45 +225,45 @@
 				<!-- Message -->
 				<TextBlock Text="{Binding Teams.IsInternetFaulted, Converter={StaticResource BoolToCustomString}}"
 						   Style="{StaticResource Typo10}"
+						   TextAlignment="Center"
 						   HorizontalAlignment="Center"
 						   VerticalAlignment="Center"
-						   TextAlignment="Center"
 						   Margin="50,0,50,48" />
 
 				<!-- Reload button -->
 				<Button x:Name="ReloadButton_3"
+						Style="{StaticResource ReloadButtonStyle}"
 						Content="Reload"
 						Command="{Binding ReloadPage}"
-						Style="{StaticResource ReloadButtonStyle}"
 						VerticalAlignment="Bottom"
 						Margin="16,22" />
 			</Grid>
 
 
-			<!-- Error State Project (when landing directly on project page )-->
+			<!-- Error State Project (when landing directly on project page ) -->
 			<Grid Visibility="{Binding Project.IsFaulted, Converter={StaticResource TrueToVisible}, FallbackValue=Collapsed}">
 
 				<!-- Message -->
 				<TextBlock Text="{Binding Project.IsInternetFaulted, Converter={StaticResource BoolToCustomString}}"
 						   Style="{StaticResource Typo10}"
+						   TextAlignment="Center"
 						   HorizontalAlignment="Center"
 						   VerticalAlignment="Center"
-						   TextAlignment="Center"
 						   Margin="50,0,50,48" />
 
 				<!-- Reload button -->
 				<Button x:Name="ReloadButton_1"
+						Style="{StaticResource ReloadButtonStyle}"
 						Content="Reload"
 						Command="{Binding ReloadPage}"
-						Style="{StaticResource ReloadButtonStyle}"
 						VerticalAlignment="Bottom"
 						Margin="16,22" />
 			</Grid>
 
 			<!-- Content -->
 			<Grid x:Name="RootLayout"
-				  Visibility="{Binding IterationWorkItems.IsExecuting, Converter={StaticResource TrueToCollapsed}, FallbackValue=Collapsed, TargetNullValue=Collapsed}"
-				  Background="{StaticResource Color02Brush}">
+				  Background="{StaticResource Color02Brush}"
+				  Visibility="{Binding IterationWorkItems.IsExecuting, Converter={StaticResource TrueToCollapsed}, FallbackValue=Collapsed, TargetNullValue=Collapsed}">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto" />
 					<RowDefinition Height="Auto" />
@@ -275,9 +276,9 @@
 						  ItemsSource="{Binding Teams.Result}"
 						  SelectedItem="{Binding SelectedTeam, Mode=TwoWay}"
 						  ItemTemplate="{StaticResource TeamComboBoxItemTemplate}"
-						  Height="{StaticResource SmallComboBoxHeight}"
 						  IsEnabled="{Binding Teams.Result, Converter={StaticResource EnumerableHasMinimumToTrue}}"
-						  xamarin:DeferLoadStrategy="Lazy" />
+						  xamarin:DeferLoadStrategy="Lazy"
+						  Height="{StaticResource SmallComboBoxHeight}" />
 
 				<!-- Navigation tabs -->
 				<Grid x:Name="NavigationTabsContainer"
@@ -293,22 +294,22 @@
 
 						<!-- Summary View Tab -->
 						<RadioButton x:Name="SummaryBtn"
-									 GroupName="ViewTabsThin"
 									 Content="Summary"
+									 GroupName="ViewTabsThin"
 									 IsChecked="{Binding Path=CurrentView, Mode=TwoWay, Converter={StaticResource ProjectViewToIsCheckedConverter}, ConverterParameter=Summary}"
 									 Grid.Column="0" />
 
 						<!-- Srpint View Tab -->
 						<RadioButton x:Name="SprintBtn"
-									 GroupName="ViewTabsThin"
 									 Content="Sprint"
+									 GroupName="ViewTabsThin"
 									 IsChecked="{Binding Path=CurrentView, Mode=TwoWay, Converter={StaticResource ProjectViewToIsCheckedConverter}, ConverterParameter=Sprint}"
 									 Grid.Column="1" />
 
 						<!-- Members View Tab -->
 						<RadioButton x:Name="MembersBtn"
-									 GroupName="ViewTabsThin"
 									 Content="Members"
+									 GroupName="ViewTabsThin"
 									 IsChecked="{Binding Path=CurrentView, Mode=TwoWay, Converter={StaticResource ProjectViewToIsCheckedConverter}, ConverterParameter=Members}"
 									 Grid.Column="2" />
 					</Grid>
@@ -317,8 +318,8 @@
 				<!-- Summary -->
 				<Grid x:Name="SummaryGridView"
 					  Visibility="{Binding IsChecked, ElementName=SummaryBtn, Converter={StaticResource TrueToVisible}}"
-					  Grid.Row="2"
-					  Margin="16,40">
+					  Margin="16,40"
+					  Grid.Row="2">
 					<ScrollViewer>
 						<Grid x:Name="SummaryGridViewChild"
 							  HorizontalAlignment="Stretch">
@@ -336,30 +337,29 @@
 							<!-- Project description -->
 							<Grid x:Name="ProjectDescriptionGridView"
 								  Background="{StaticResource Color02Brush}"
-								  Grid.Column="0"
-								  MaxWidth="850"
 								  MinWidth="150"
+								  MaxWidth="850"
 								  HorizontalAlignment="Left"
-								  Margin="0,0,0,20">
+								  Margin="0,0,0,20"
+								  Grid.Column="0">
 								<StackPanel Spacing="16">
 									<TextBlock Text="About this project"
 											   Style="{StaticResource Typo22}" />
 
-									<TextBlock TextWrapping="Wrap"
-											   Text="{Binding CurrentProject.Description}"
-											   Visibility="{Binding CurrentProject.Description, Converter={StaticResource EmptyStringToCollapsed}, FallbackValue=Visible}"
-											   Style="{StaticResource Typo08}" />
+									<TextBlock Text="{Binding CurrentProject.Description}"
+											   Style="{StaticResource Typo08}"
+											   TextWrapping="Wrap"
+											   Visibility="{Binding CurrentProject.Description, Converter={StaticResource EmptyStringToCollapsed}, FallbackValue=Visible}" />
 
-									<TextBlock TextWrapping="Wrap"
-											   Text="No description available"
-											   Visibility="{Binding CurrentProject.Description, Converter={StaticResource EmptyStringToVisible}, FallbackValue=Collapsed}"
-											   Style="{StaticResource Typo08}" />
+									<TextBlock Text="No description available"
+											   Style="{StaticResource Typo08}"
+											   TextWrapping="Wrap"
+											   Visibility="{Binding CurrentProject.Description, Converter={StaticResource EmptyStringToVisible}, FallbackValue=Collapsed}" />
 								</StackPanel>
 							</Grid>
 
 							<!-- Project statistics -->
 							<Grid x:Name="SummarySideData"
-								
 								  HorizontalAlignment="Stretch"
 								  Grid.Row="1">
 								<Grid HorizontalAlignment="Stretch">
@@ -388,17 +388,17 @@
 											   Grid.Row="1"
 											   Grid.ColumnSpan="3" />
 
-									<StackPanel Grid.Row="2"
-												Margin="{StaticResource StatisticRowMargin}">
+									<StackPanel Margin="{StaticResource StatisticRowMargin}"
+												Grid.Row="2">
 										<TextBlock Text="{Binding DaysRemaining}"
 												   Style="{StaticResource Typo23}" />
 										<TextBlock Text="Days remaining"
 												   Style="{StaticResource Typo08}" />
 									</StackPanel>
 
-									<StackPanel Grid.Row="2"
-												Grid.Column="2"
-												Margin="{StaticResource StatisticRowMargin}">
+									<StackPanel Margin="{StaticResource StatisticRowMargin}"
+												Grid.Row="2"
+												Grid.Column="2">
 										<TextBlock Text="{Binding TotalWorkItems}"
 												   Style="{StaticResource Typo23}" />
 										<TextBlock Text="Total work items"
@@ -410,17 +410,17 @@
 											   Grid.Row="3"
 											   Grid.ColumnSpan="3" />
 
-									<StackPanel Grid.Row="4"
-												Margin="{StaticResource StatisticRowMargin}">
+									<StackPanel Margin="{StaticResource StatisticRowMargin}"
+												Grid.Row="4">
 										<TextBlock Text="{Binding NumberOfPbiInProgress}"
 												   Style="{StaticResource Typo23}" />
 										<TextBlock Text="PBI in progress"
 												   Style="{StaticResource Typo08}" />
 									</StackPanel>
 
-									<StackPanel Grid.Row="4"
-												Grid.Column="2"
-												Margin="{StaticResource StatisticRowMargin}">
+									<StackPanel Margin="{StaticResource StatisticRowMargin}"
+												Grid.Row="4"
+												Grid.Column="2">
 										<TextBlock Text="{Binding NumberOfBugInProgress}"
 												   Style="{StaticResource Typo23}" />
 										<TextBlock Text="Bugs in progress"
@@ -429,10 +429,10 @@
 
 									<TextBlock Text="Assignments"
 											   Style="{StaticResource Typo02}"
-											   Grid.Row="5"
-											   Grid.ColumnSpan="3"
+											   HorizontalAlignment="Left"
 											   VerticalAlignment="Top"
-											   HorizontalAlignment="Left" />
+											   Grid.Row="5"
+											   Grid.ColumnSpan="3" />
 
 									<StackPanel Grid.Row="6">
 										<TextBlock Text="{Binding NumberOfAssignedWorkItem}"
@@ -441,9 +441,9 @@
 												   Style="{StaticResource Typo08}" />
 									</StackPanel>
 
-									<StackPanel Grid.Row="6"
-												Grid.Column="2"
-												HorizontalAlignment="Left">
+									<StackPanel HorizontalAlignment="Left"
+												Grid.Row="6"
+												Grid.Column="2">
 										<TextBlock Text="{Binding NumberOfUnassignedWorkItem}"
 												   Style="{StaticResource Typo23}" />
 										<TextBlock Text="Work items unassigned"
@@ -456,7 +456,7 @@
 				</Grid>
 
 				<!-- Sprint -->
-				<Grid Visibility="{Binding IsChecked,ElementName=SprintBtn, Converter={StaticResource TrueToVisible}, FallbackValue=Collapsed}"
+				<Grid Visibility="{Binding IsChecked, ElementName=SprintBtn, Converter={StaticResource TrueToVisible}, FallbackValue=Collapsed}"
 					  Grid.Row="2">
 					<Grid.RowDefinitions>
 						<RowDefinition Height="64" />
@@ -471,11 +471,11 @@
 							  IsEnabled="{Binding Iterations.Result, Converter={StaticResource EnumerableHasMinimumToTrue}}"
 							  SelectedItem="{Binding SelectedIteration, Mode=TwoWay}"
 							  ItemTemplate="{StaticResource SprintComboBoxItemTemplate}"
-							  Height="{StaticResource LargeComboBoxHeight}"
-							  xamarin:DeferLoadStrategy="Lazy" />
+							  xamarin:DeferLoadStrategy="Lazy"
+							  Height="{StaticResource LargeComboBoxHeight}" />
 
 					<!-- No Sprint State -->
-					<Grid Visibility="{Binding Iterations.Result, Converter={StaticResource EnumerableHasAnyToCollapsed}, FallbackValue=Collapsed }">
+					<Grid Visibility="{Binding Iterations.Result, Converter={StaticResource EnumerableHasAnyToCollapsed}, FallbackValue=Collapsed}">
 						<StackPanel VerticalAlignment="Center"
 									Margin="16,0">
 
@@ -493,10 +493,10 @@
 					<Grid Visibility="{Binding Iterations.IsExecuting, Converter={StaticResource TrueToVisible}, FallbackValue=Collapsed, TargetNullValue=Collapsed}">
 
 						<!-- Progress Ring -->
-						<ProgressRing IsActive="True"
-									  Foreground="{StaticResource Color03Brush}"
-									  Height="20"
+						<ProgressRing Foreground="{StaticResource Color03Brush}"
+									  IsActive="True"
 									  Width="20"
+									  Height="20"
 									  HorizontalAlignment="Center"
 									  VerticalAlignment="Center"
 									  Margin="0,12" />
@@ -512,30 +512,30 @@
 							  Grid.Row="1" />
 
 					<!-- Empty List Message -->
-					<TextBlock Visibility="{Binding IterationWorkItems.Result, Converter={StaticResource EnumerableHasAnyToCollapsed}, FallbackValue=Collapsed}"
-							   Text="No work items in this iteration"
+					<TextBlock Text="No work items in this iteration"
 							   Style="{StaticResource Typo15}"
+							   Visibility="{Binding IterationWorkItems.Result, Converter={StaticResource EnumerableHasAnyToCollapsed}, FallbackValue=Collapsed}"
 							   Margin="16,12"
 							   Grid.Row="1" />
 
 					<!-- Error state for work items list -->
-					<Grid Visibility="{Binding IterationWorkItems.IsFaulted, Converter={StaticResource TrueToVisible}, FallbackValue=Collapsed}"
-						  Background="{StaticResource Color07Brush}"
+					<Grid Background="{StaticResource Color07Brush}"
+						  Visibility="{Binding IterationWorkItems.IsFaulted, Converter={StaticResource TrueToVisible}, FallbackValue=Collapsed}"
 						  Grid.Row="1">
 
 						<!-- Message -->
 						<TextBlock Text="{Binding IterationWorkItems.IsInternetFaulted, Converter={StaticResource BoolToCustomString}}"
 								   Style="{StaticResource Typo10}"
+								   TextAlignment="Center"
 								   HorizontalAlignment="Center"
 								   VerticalAlignment="Center"
-								   TextAlignment="Center"
 								   Margin="25,0,25,24" />
 
 						<!-- Reload button -->
 						<Button x:Name="ReloadButton_2"
+								Style="{StaticResource ReloadButtonStyle}"
 								Content="Reload"
 								Command="{Binding ReloadPage}"
-								Style="{StaticResource ReloadButtonStyle}"
 								VerticalAlignment="Bottom"
 								Margin="16,22" />
 					</Grid>
@@ -544,16 +544,16 @@
 					<Grid Visibility="{Binding IterationWorkItems.IsExecuting, Converter={StaticResource TrueToVisible}, FallbackValue=Collapsed, TargetNullValue=Collapsed}"
 						  Grid.Row="1">
 
-						<StackPanel VerticalAlignment="Center"
-									HorizontalAlignment="Center">
+						<StackPanel HorizontalAlignment="Center"
+									VerticalAlignment="Center">
 
 							<!-- Progress Ring -->
-							<ProgressRing IsActive="True"
-										  Foreground="{StaticResource Color03Brush}"
+							<ProgressRing Foreground="{StaticResource Color03Brush}"
+										  IsActive="True"
+										  Width="20"
+										  Height="20"
 										  HorizontalAlignment="Center"
 										  VerticalAlignment="Center"
-										  Height="20"
-										  Width="20"
 										  Margin="0,12" />
 
 							<!-- Verifying Message -->
@@ -584,10 +584,10 @@
 
 											<!-- Project Member Image -->
 											<Grid Background="{StaticResource Color07Brush}"
-												  VerticalAlignment="Center"
 												  CornerRadius="16"
-												  Height="32"
 												  Width="32"
+												  Height="32"
+												  VerticalAlignment="Center"
 												  Margin="16,0,0,0"
 												  Grid.Column="0">
 
@@ -596,9 +596,9 @@
 														   Style="{StaticResource MemberInitialsTextBlock}" />
 
 												<!-- Profile image -->
-												<Grid Height="32"
+												<Grid CornerRadius="16"
 													  Width="32"
-													  CornerRadius="16">
+													  Height="32">
 													<Grid.Background>
 														<ImageBrush ImageSource="{Binding Identity.Links.Links[avatar].Href}" />
 													</Grid.Background>
@@ -608,15 +608,15 @@
 											<!-- Project Member Name -->
 											<TextBlock Text="{Binding Identity.DisplayName}"
 													   Style="{StaticResource Typo08}"
+													   MaxLines="1"
 													   VerticalAlignment="Center"
 													   Margin="10,0,0,0"
-													   MaxLines="1"
 													   Grid.Column="1" />
 										</Grid>
 
 										<!-- Separator -->
-										<Rectangle Height="1"
-												   Fill="{StaticResource Color07Brush}"
+										<Rectangle Fill="{StaticResource Color07Brush}"
+												   Height="1"
 												   Margin="0,1,0,0" />
 									</StackPanel>
 								</Grid>
@@ -626,37 +626,37 @@
 
 					<!-- Empty List Message -->
 					<TextBlock Text="No members in this project"
-							   Visibility="{Binding TeamMembers.Result, Converter={StaticResource EnumerableHasAnyToCollapsed}, FallbackValue=Collapsed}"
 							   Style="{StaticResource Typo15}"
+							   Visibility="{Binding TeamMembers.Result, Converter={StaticResource EnumerableHasAnyToCollapsed}, FallbackValue=Collapsed}"
 							   Margin="16,12" />
 
 
 					<!-- Error state for member listview -->
-					<Grid Visibility="{Binding TeamMembers.IsFaulted, Converter={StaticResource TrueToVisible}, FallbackValue=Collapsed}"
-						  Background="{StaticResource Color07Brush}">
+					<Grid Background="{StaticResource Color07Brush}"
+						  Visibility="{Binding TeamMembers.IsFaulted, Converter={StaticResource TrueToVisible}, FallbackValue=Collapsed}">
 
 						<!-- Message -->
 						<TextBlock Text="{Binding TeamMembers.IsInternetFaulted, Converter={StaticResource BoolToCustomString}}"
 								   Style="{StaticResource Typo10}"
+								   TextAlignment="Center"
 								   HorizontalAlignment="Center"
 								   VerticalAlignment="Center"
-								   TextAlignment="Center"
 								   Margin="50,0,50,48" />
 					</Grid>
 
 					<!-- Loading State -->
 					<Grid Visibility="{Binding TeamMembers.IsExecuting, Converter={StaticResource TrueToVisible}, FallbackValue=Collapsed, TargetNullValue=Collapsed}">
 
-						<StackPanel VerticalAlignment="Center"
-									HorizontalAlignment="Center">
+						<StackPanel HorizontalAlignment="Center"
+									VerticalAlignment="Center">
 
 							<!-- Progress Ring -->
-							<ProgressRing IsActive="True"
-										  Foreground="{StaticResource Color03Brush}"
+							<ProgressRing Foreground="{StaticResource Color03Brush}"
+										  IsActive="True"
+										  Width="20"
+										  Height="20"
 										  HorizontalAlignment="Center"
 										  VerticalAlignment="Center"
-										  Height="20"
-										  Width="20"
 										  Margin="0,12" />
 
 							<!-- Verifying Message -->
@@ -673,27 +673,27 @@
 			  Grid.ColumnSpan="2">
 
 			<!-- ComboBox Popup BG 1 -->
-			<Grid Visibility="{Binding IsDropDownOpen, ElementName=TeamsComboBox, Converter={StaticResource TrueToVisible}}"
-				  Background="Black"
+			<Grid Background="Black"
+				  Visibility="{Binding IsDropDownOpen, ElementName=TeamsComboBox, Converter={StaticResource TrueToVisible}}"
 				  Opacity="0.6"
 				  Grid.RowSpan="2" />
 
 			<!-- ComboBox Popup BG 2 -->
-			<Grid Visibility="{Binding IsDropDownOpen, ElementName=IterationsComboBox, Converter={StaticResource TrueToVisible}}"
-				  Background="Black"
+			<Grid Background="Black"
+				  Visibility="{Binding IsDropDownOpen, ElementName=IterationsComboBox, Converter={StaticResource TrueToVisible}}"
 				  Opacity="0.6"
 				  Grid.RowSpan="2" />
 		</Grid>
 
 		<!-- Side hamburger menu -->
 		<uc:SideMenu x:Name="LargeViewNavigation"
-					 NavLevel="Project"
 					 Background="{StaticResource Color06Brush}"
+					 NavLevel="Project"
 					 MenuVisibility="Collapsed"
 					 IsFullscreenMenu="True"
+					 HorizontalAlignment="Stretch"
 					 Grid.Row="1"
-					 Grid.RowSpan="1"
-					 HorizontalAlignment="Stretch" />
+					 Grid.RowSpan="1" />
 
 		<!-- Close Button -->
 		<Border x:Name="CloseButton"

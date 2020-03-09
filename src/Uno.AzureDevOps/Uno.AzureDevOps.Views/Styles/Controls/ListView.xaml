@@ -1,18 +1,18 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 					xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-					xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 					xmlns:xamarin="http://nventive.com/xamarin"
+					xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 					mc:Ignorable="xamarin">
 
-	<!-- 
+	<!--
 		Find the latest styles here:
 		C:\Program Files (x86)\Windows Kits\10\DesignTime\CommonConfiguration\Neutral\UAP\10.0.14393.0\Generic\generic.xaml
 	-->
 
 	<Style x:Key="DefaultListViewStyle"
 		   TargetType="ListView">
-		
+
 		<Setter Property="IsTabStop"
 				Value="False" />
 		<Setter Property="TabNavigation"
@@ -35,7 +35,7 @@
 				Value="False" />
 		<Setter Property="ScrollViewer.BringIntoViewOnFocusChange"
 				Value="True" />
-		
+
 		<Setter Property="ItemContainerTransitions">
 			<Setter.Value>
 				<TransitionCollection>
@@ -51,12 +51,12 @@
 				</ItemsPanelTemplate>
 			</Setter.Value>
 		</Setter>
-		
+
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="ListView">
-					<Border BorderBrush="{TemplateBinding BorderBrush}"
-							Background="{TemplateBinding Background}"
+					<Border Background="{TemplateBinding Background}"
+							BorderBrush="{TemplateBinding BorderBrush}"
 							BorderThickness="{TemplateBinding BorderThickness}">
 
 						<ScrollViewer x:Name="ScrollViewer"
@@ -74,7 +74,7 @@
 									  IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
 									  BringIntoViewOnFocusChange="{TemplateBinding ScrollViewer.BringIntoViewOnFocusChange}"
 									  AutomationProperties.AccessibilityView="Raw">
-							
+
 							<ItemsPresenter Header="{TemplateBinding Header}"
 											HeaderTemplate="{TemplateBinding HeaderTemplate}"
 											HeaderTransitions="{TemplateBinding HeaderTransitions}"

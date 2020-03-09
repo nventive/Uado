@@ -3,13 +3,13 @@
 	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	  xmlns:wasm="http:/uno.ui/wasm"
 	  xmlns:beh="using:Uno.AzureDevOps.Views.Behaviors"
-	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  xmlns:uc="using:Uno.AzureDevOps.Views.Controls"
-	  xmlns:not_wasm="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  xmlns:toolkit="using:Uno.UI.Toolkit"
 	  xmlns:controls="using:Uno.AzureDevOps.Views.Controls"
+	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:wasm="http:/uno.ui/wasm"
+	  xmlns:not_wasm="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  mc:Ignorable="wasm">
 
 	<UserControl.Resources>
@@ -74,11 +74,11 @@
 						<Setter Target="LargeViewNavigation.(Grid.Row)"
 								Value="0" />
 						<Setter Target="LargeViewNavigation.(Grid.RowSpan)"
-						             Value="2" />
+								Value="2" />
 						<wasm:Setter Target="AboutGridViewChild.Margin"
-						             Value="56,40,0,0" />
+									 Value="56,40,0,0" />
 						<win:Setter Target="AboutGridViewChild.Margin"
-						            Value="56,40,0,0" />
+									Value="56,40,0,0" />
 					</VisualState.Setters>
 				</VisualState>
 			</VisualStateGroup>
@@ -86,20 +86,21 @@
 
 		<!-- PAGE HEADER -->
 		<controls:PageHeader x:Name="HeaderView"
-							 Grid.Column="0"
-							 Grid.ColumnSpan="2"
 							 Title="About"
 							 HamburgerMenuVisibility="Collapsed"
+							 Grid.Column="0"
+							 Grid.ColumnSpan="2"
 							 beh:FullscreenSideMenuBehavior.IsFullscreenMenu="{Binding IsFullscreenMenu, ElementName=LargeViewNavigation}"
 							 beh:FullscreenSideMenuBehavior.MenuVisibility="{Binding MenuVisibility, ElementName=LargeViewNavigation}" />
 
-		<ScrollViewer x:Name="ContentView" Grid.Row="1">
+		<ScrollViewer x:Name="ContentView"
+					  Grid.Row="1">
 
 			<Grid x:Name="AboutGridViewChild"
-				  HorizontalAlignment="Left"
-				  Margin="16,40,0,0"
 				  Background="{StaticResource Color02Brush}"
-				  ColumnSpacing="0">
+				  ColumnSpacing="0"
+				  HorizontalAlignment="Left"
+				  Margin="16,40,0,0">
 
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="*" />
@@ -112,26 +113,26 @@
 					<RowDefinition Height="Auto" />
 				</Grid.RowDefinitions>
 
-				<StackPanel Grid.Column="0"
+				<StackPanel Spacing="16"
 							MaxWidth="850"
 							HorizontalAlignment="Left"
-							Spacing="16"
-							Margin="16">
+							Margin="16"
+							Grid.Column="0">
 
 					<TextBlock Text="About UADO"
 							   Style="{StaticResource Typo22}" />
 
 					<!-- Paragraph 1 -->
-					<TextBlock Margin="0,0,0,12"
-							   Style="{StaticResource Typo08}">
+					<TextBlock Style="{StaticResource Typo08}"
+							   Margin="0,0,0,12">
 						<Run Text="We built UADO to show you just what's possible with Uno Platform –a single codebase, native mobile and WebAssembly app, using only C# and XAML – currently" />
 						<Run Text="the only platform to do so."
 							 FontWeight="Bold" />
 					</TextBlock>
 
 					<!-- Paragraph 2 -->
-					<TextBlock Margin="0,0,0,12"
-							   Style="{StaticResource Typo08}">
+					<TextBlock Style="{StaticResource Typo08}"
+							   Margin="0,0,0,12">
 						<Run Text="But, UADO is more than just a showcase app -" />
 						<Run Text="it also is a real app"
 							 FontWeight="Bold" />
@@ -145,42 +146,42 @@
 				</StackPanel>
 
 				<StackPanel x:Name="LearnMoreLinksView"
-							Grid.Column="0"
-							Grid.Row="1"
+							MaxWidth="850"
 							Margin="16"
-							MaxWidth="850">
+							Grid.Row="1"
+							Grid.Column="0">
 					<TextBlock Text="To learn more"
-					           Style="{StaticResource Typo22}"
-					           Margin="0,0,0,5"/>
+							   Style="{StaticResource Typo22}"
+							   Margin="0,0,0,5" />
 
-					<Button Command="{Binding NavigateToUnoPlatform}"
-							Style="{StaticResource ExternalNavigationButtonStyle}">
+					<Button Style="{StaticResource ExternalNavigationButtonStyle}"
+							Command="{Binding NavigateToUnoPlatform}">
 						<TextBlock Text="https://platform.uno"
 								   Style="{StaticResource ExternalLinksTextBlock}"
 								   TextWrapping="NoWrap" />
 					</Button>
 
 					<Button x:Name="SourceCodeButtonView"
-					        Command="{Binding NavigateToSourceCode}"
-					        Style="{StaticResource ExternalNavigationButtonStyle}">
+							Style="{StaticResource ExternalNavigationButtonStyle}"
+							Command="{Binding NavigateToSourceCode}">
 						<StackPanel Orientation="Horizontal">
-							<Image wasm:Source="ms-appx:///Assets/gitGreen.scale-100.png"
-								   not_wasm:Source="ms-appx:///Assets/gitGreen.png"
-								   Style="{StaticResource NavItemImageStyle}" />
+							<Image Style="{StaticResource NavItemImageStyle}"
+								   wasm:Source="ms-appx:///Assets/gitGreen.scale-100.png"
+								   not_wasm:Source="ms-appx:///Assets/gitGreen.png" />
 							<TextBlock Text="Source code"
-									   MinWidth="125"
 									   Style="{StaticResource ExternalLinksLightTextBlock}"
+									   TextWrapping="NoWrap"
+									   MinWidth="125"
 									   VerticalAlignment="Center"
-									   Margin="12,0,0,0"
-									   TextWrapping="NoWrap" />
+									   Margin="12,0,0,0" />
 						</StackPanel>
 					</Button>
 
 					<StackPanel x:Name="StackPanelConditionsView">
 
 						<!-- Terms & Conditions Button -->
-						<Button Command="{Binding NavigateToTermsAndConditions}"
-								Style="{StaticResource ExternalNavigationButtonStyle}"
+						<Button Style="{StaticResource ExternalNavigationButtonStyle}"
+								Command="{Binding NavigateToTermsAndConditions}"
 								Height="36">
 							<TextBlock Text="Terms and conditions"
 									   Style="{StaticResource ExternalLinksTextBlock}"
@@ -188,8 +189,8 @@
 						</Button>
 
 						<!-- Privacy Policy Button -->
-						<Button Command="{Binding NavigateToPrivacyPolicy}"
-								Style="{StaticResource ExternalNavigationButtonStyle}"
+						<Button Style="{StaticResource ExternalNavigationButtonStyle}"
+								Command="{Binding NavigateToPrivacyPolicy}"
 								Height="36">
 							<TextBlock Text="Privacy policy"
 									   Style="{StaticResource ExternalLinksTextBlock}"
@@ -203,12 +204,12 @@
 		<!-- Side hamburger menu -->
 		<!-- Workaround, set RowSpan 1 as 0 causes a crash -->
 		<uc:SideMenu x:Name="LargeViewNavigation"
-					 NavLevel="About"
 					 Background="{StaticResource Color06Brush}"
+					 NavLevel="About"
 					 MenuVisibility="Collapsed"
 					 IsFullscreenMenu="True"
+					 HorizontalAlignment="Stretch"
 					 Grid.Row="1"
-					 Grid.RowSpan="1"
-					 HorizontalAlignment="Stretch" />
+					 Grid.RowSpan="1" />
 	</Grid>
 </Page>

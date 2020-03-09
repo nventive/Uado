@@ -1,16 +1,16 @@
 ﻿<UserControl x:Class="Uno.AzureDevOps.Views.Controls.SideMenu"
 			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-			 xmlns:behaviors="using:Uno.AzureDevOps.Views.Behaviors"
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-			 xmlns:wasm="http:/uno.ui/wasm"
-			 xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-			 xmlns:not_wasm="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:behaviors="using:Uno.AzureDevOps.Views.Behaviors"
 			 xmlns:toolkit="using:Uno.UI.Toolkit"
-			 mc:Ignorable="d wasm"
+			 xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:wasm="http:/uno.ui/wasm"
+			 xmlns:not_wasm="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 			 d:DesignHeight="300"
-			 d:DesignWidth="400">
+			 d:DesignWidth="400"
+			 mc:Ignorable="d wasm">
 
 	<UserControl.Resources>
 		<Style x:Key="NavItemImageStyle"
@@ -27,8 +27,8 @@
 	<Grid Background="{StaticResource Color08Brush}"
 		  BorderBrush="{StaticResource Color06Brush}"
 		  BorderThickness="0,0,1,0">
-		<Grid toolkit:VisibleBoundsPadding.PaddingMask="Top"
-			  MinWidth="300">
+		<Grid MinWidth="300"
+			  toolkit:VisibleBoundsPadding.PaddingMask="Top">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*" />
 				<ColumnDefinition Width="Auto" />
@@ -36,9 +36,9 @@
 
 			<StackPanel x:Name="TopMenuLogoView"
 						Visibility="Collapsed"
+						VerticalAlignment="Top"
 						Padding="45"
-						Margin="0,15,0,0"
-						VerticalAlignment="Top">
+						Margin="0,15,0,0">
 				<Image wasm:Source="ms-appx:///Assets/logoUADO.scale-100.png"
 					   not_wasm:Source="ms-appx:///Assets/logoUADO.png"
 					   Stretch="Uniform"
@@ -48,13 +48,13 @@
 
 			<!-- Top Menu, display organization, back, and all projects -->
 			<StackPanel x:Name="TopMenuView"
-						VerticalAlignment="Top"
-						Visibility="Visible">
+						Visibility="Visible"
+						VerticalAlignment="Top">
 
 				<!-- To Organizations button -->
 				<Button x:Name="ButtonOrganizationView"
-						Command="{Binding ToOrganizationListPage}"
 						Style="{StaticResource NavigationButtonStyle}"
+						Command="{Binding ToOrganizationListPage}"
 						MinHeight="{StaticResource CommandBarHeight}"
 						HorizontalContentAlignment="Left">
 					<StackPanel Orientation="Horizontal"
@@ -67,9 +67,9 @@
 							   Height="16" />
 
 						<TextBlock Text="All Organizations"
+								   Style="{StaticResource Typo21}"
 								   VerticalAlignment="Center"
-								   Margin="6,0,0,0"
-								   Style="{StaticResource Typo21}" />
+								   Margin="6,0,0,0" />
 					</StackPanel>
 				</Button>
 
@@ -87,9 +87,9 @@
 						</Grid.ColumnDefinitions>
 
 						<Grid Background="{Binding Text, ElementName=Initials, Converter={StaticResource InitialsColor}}"
-							  Height="32"
-							  Width="32"
 							  CornerRadius="4"
+							  Width="32"
+							  Height="32"
 							  VerticalAlignment="Center">
 							<TextBlock x:Name="Initials"
 									   Text="{Binding Account.AccountName, Converter={StaticResource MemberInitials}}"
@@ -98,18 +98,18 @@
 
 						<TextBlock Text="{Binding Account.AccountName}"
 								   Style="{StaticResource Typo01}"
-								   Grid.Column="1"
-								   Margin="16,0"
 								   FontSize="21"
 								   TextWrapping="NoWrap"
-								   TextTrimming="CharacterEllipsis" />
+								   TextTrimming="CharacterEllipsis"
+								   Margin="16,0"
+								   Grid.Column="1" />
 					</Grid>
 				</Border>
 
 				<!-- Project Button -->
 				<RadioButton x:Name="ButtonAllProjects"
-							 Command="{Binding ToProjectListPage}"
 							 Style="{StaticResource NavigationRadioButtonStyle}"
+							 Command="{Binding ToProjectListPage}"
 							 GroupName="MenuGroup">
 					<TextBlock Text="All Projects"
 							   Style="{StaticResource Typo08}" />
@@ -127,14 +127,14 @@
 
 					<!-- Profile Button -->
 					<RadioButton x:Name="ButtonProfile"
-								 Command="{Binding ToProfilePage}"
 								 Style="{StaticResource NavigationRadioButtonStyle}"
+								 Command="{Binding ToProfilePage}"
 								 GroupName="MenuGroup">
 						<StackPanel Spacing="14"
 									Orientation="Horizontal">
-							<Image wasm:Source="ms-appx:///Assets/profile.scale-100.png"
-								   not_wasm:Source="ms-appx:///Assets/profile.png"
-								   Style="{StaticResource NavItemImageStyle}" />
+							<Image Style="{StaticResource NavItemImageStyle}"
+								   wasm:Source="ms-appx:///Assets/profile.scale-100.png"
+								   not_wasm:Source="ms-appx:///Assets/profile.png" />
 							<TextBlock Text="Profile"
 									   Style="{StaticResource Typo08}"
 									   TextWrapping="NoWrap" />
@@ -146,14 +146,14 @@
 							   Height="1" />
 
 					<RadioButton x:Name="ButtonAbout"
-								 Command="{Binding ToAboutPage}"
 								 Style="{StaticResource NavigationRadioButtonStyle}"
+								 Command="{Binding ToAboutPage}"
 								 GroupName="MenuGroup">
 						<StackPanel Spacing="14"
 									Orientation="Horizontal">
-							<Image wasm:Source="ms-appx:///Assets/about.scale-100.png"
-								   not_wasm:Source="ms-appx:///Assets/about.png"
-								   Style="{StaticResource NavItemImageStyle}" />
+							<Image Style="{StaticResource NavItemImageStyle}"
+								   wasm:Source="ms-appx:///Assets/about.scale-100.png"
+								   not_wasm:Source="ms-appx:///Assets/about.png" />
 							<TextBlock Text="About"
 									   Style="{StaticResource Typo08}"
 									   TextWrapping="NoWrap" />
@@ -165,8 +165,8 @@
 							   Height="1" />
 
 					<!-- Log Out Button -->
-					<Button Command="{Binding Logout}"
-							Style="{StaticResource NavigationButtonStyle}"
+					<Button Style="{StaticResource NavigationButtonStyle}"
+							Command="{Binding Logout}"
 							Height="65">
 						<Grid>
 							<Grid.RowDefinitions>
@@ -179,19 +179,19 @@
 							</Grid.ColumnDefinitions>
 
 							<!-- User initials -->
-							<Grid CornerRadius="16"
-								  Height="24"
+							<Grid Background="{StaticResource Color07Brush}"
+								  CornerRadius="16"
 								  Width="24"
-								  Background="{StaticResource Color07Brush}">
+								  Height="24">
 								<TextBlock Text="{Binding UserProfile.Result.Name, Converter={StaticResource MemberInitials}}"
 										   Style="{StaticResource MemberInitialsTextBlock}"
-										   FontSize="12"/>
+										   FontSize="12" />
 							</Grid>
 
 							<!-- User profile image -->
 							<Grid CornerRadius="16"
-								  Height="24"
-								  Width="24">
+								  Width="24"
+								  Height="24">
 								<Grid.Background>
 									<ImageBrush behaviors:ImageBrushStreamSourceBehavior.Source="{Binding UserProfile.Result.Image}" />
 								</Grid.Background>
@@ -199,19 +199,19 @@
 
 							<!-- Logout Text -->
 							<TextBlock Text="Log Out"
-									   Grid.Column="1"
-									   Margin="14,0,0,0"
 									   Style="{StaticResource Typo08}"
-									   TextWrapping="NoWrap" />
+									   TextWrapping="NoWrap"
+									   Margin="14,0,0,0"
+									   Grid.Column="1" />
 
 							<!-- User Email -->
-							<TextBlock Grid.Row="1"
-									   Grid.Column="1"
-									   Margin="14,0,0,0"
+							<TextBlock Text="{Binding UserProfile.Result.Email}"
 									   Style="{StaticResource Typo18}"
-									   Text="{Binding UserProfile.Result.Email}"
 									   TextWrapping="NoWrap"
-									   TextTrimming="CharacterEllipsis" />
+									   TextTrimming="CharacterEllipsis"
+									   Margin="14,0,0,0"
+									   Grid.Row="1"
+									   Grid.Column="1" />
 						</Grid>
 					</Button>
 				</StackPanel>
@@ -223,8 +223,8 @@
 				<StackPanel Background="{StaticResource Color08Brush}"
 							Padding="0,15">
 					<TextBlock Text="{Binding AppVersion}"
-							   HorizontalAlignment="Center"
-							   Style="{StaticResource Typo20}" />
+							   Style="{StaticResource Typo20}"
+							   HorizontalAlignment="Center" />
 				</StackPanel>
 			</StackPanel>
 		</Grid>

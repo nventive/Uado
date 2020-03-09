@@ -60,18 +60,18 @@
 						<Rectangle x:Name="PressedOverlay"
 								   IsHitTestVisible="False"
 								   Fill="{StaticResource Color01Brush}"
-								   VerticalAlignment="Stretch"
+								   Opacity="0"
 								   HorizontalAlignment="Stretch"
-								   Opacity="0" />
+								   VerticalAlignment="Stretch" />
 
 						<ContentPresenter x:Name="ContentPresenter"
+										  FontSize="{TemplateBinding FontSize}"
+										  Content="{TemplateBinding Content}"
 										  ContentTemplate="{TemplateBinding ContentTemplate}"
 										  ContentTransitions="{TemplateBinding ContentTransitions}"
-										  Content="{TemplateBinding Content}"
 										  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-										  Margin="{TemplateBinding Padding}"
-										  FontSize="{TemplateBinding FontSize}"
-										  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+										  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+										  Margin="{TemplateBinding Padding}" />
 					</Grid>
 				</ControlTemplate>
 			</Setter.Value>

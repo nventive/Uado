@@ -19,12 +19,12 @@
 	<ControlTemplate x:Name="AppBarButtonControlTemplate"
 					 TargetType="AppBarButton">
 		<Grid x:Name="Root"
-			  Height="{StaticResource CommandBarHeight}"
-			  MinWidth="{TemplateBinding MinWidth}"
-			  MaxWidth="{TemplateBinding MaxWidth}"
 			  Background="{TemplateBinding Background}"
 			  BorderBrush="{TemplateBinding BorderBrush}"
-			  BorderThickness="{TemplateBinding BorderThickness}">
+			  BorderThickness="{TemplateBinding BorderThickness}"
+			  Height="{StaticResource CommandBarHeight}"
+			  MinWidth="{TemplateBinding MinWidth}"
+			  MaxWidth="{TemplateBinding MaxWidth}">
 
 			<VisualStateManager.VisualStateGroups>
 				<VisualStateGroup x:Name="ApplicationViewStates">
@@ -70,8 +70,8 @@
 				<!-- TODO: 151974 [WASM] Remove Work Around for AppBarButton Icons -->
 				<!-- Icon in wasm do not strech properly and always have a black foreground -->
 				<win:ContentPresenter x:Name="Content"
-									  Content="{TemplateBinding Icon}"
 									  Foreground="{TemplateBinding Foreground}"
+									  Content="{TemplateBinding Icon}"
 									  HorizontalAlignment="Center"
 									  VerticalAlignment="Center"
 									  AutomationProperties.AccessibilityView="Raw" />
@@ -79,21 +79,21 @@
 				<!-- TODO: 151974 [WASM] Remove Work Around for AppBarButton Icons -->
 				<!-- Icon in wasm do not strech properly and always have a black foreground -->
 				<wasm:ContentPresenter x:Name="Content"
-									   Content="{TemplateBinding Content}"
 									   Foreground="{TemplateBinding Foreground}"
+									   Content="{TemplateBinding Content}"
 									   HorizontalAlignment="Center"
 									   VerticalAlignment="Center"
 									   AutomationProperties.AccessibilityView="Raw" />
 
 				<TextBlock x:Name="TextLabel"
-						   Grid.Row="1"
 						   Text="{TemplateBinding Label}"
 						   Foreground="{TemplateBinding Foreground}"
 						   FontSize="12"
 						   FontFamily="{TemplateBinding FontFamily}"
 						   TextAlignment="Center"
 						   TextWrapping="Wrap"
-						   Margin="2,0,2,6" />
+						   Margin="2,0,2,6"
+						   Grid.Row="1" />
 			</Grid>
 
 			<TextBlock x:Name="OverflowTextLabel"
@@ -102,13 +102,13 @@
 					   FontSize="15"
 					   FontFamily="{TemplateBinding FontFamily}"
 					   TextAlignment="Left"
-					   TextTrimming="Clip"
 					   TextWrapping="NoWrap"
+					   TextTrimming="Clip"
+					   Visibility="Collapsed"
 					   HorizontalAlignment="Stretch"
 					   VerticalAlignment="Center"
-					   Margin="12,0,12,0"
 					   Padding="0,5,0,7"
-					   Visibility="Collapsed" />
+					   Margin="12,0,12,0" />
 		</Grid>
 	</ControlTemplate>
 
@@ -132,9 +132,9 @@
 			<Setter.Value>
 				<Image Source="ms-appx:///Assets/UserProfilePlaceholder.scale-100.png"
 					   Stretch="None"
+					   wasm:Width="26"
 					   HorizontalAlignment="Center"
-					   VerticalAlignment="Center"
-					   wasm:Width="26" />
+					   VerticalAlignment="Center" />
 			</Setter.Value>
 		</wasm:Setter>
 	</Style>
@@ -159,9 +159,9 @@
 			<Setter.Value>
 				<Image Source="ms-appx:///Assets/burgerMenu.scale-100.png"
 					   Stretch="None"
+					   wasm:Width="26"
 					   HorizontalAlignment="Center"
-					   VerticalAlignment="Center"
-					   wasm:Width="26" />
+					   VerticalAlignment="Center" />
 			</Setter.Value>
 		</wasm:Setter>
 	</Style>
@@ -186,9 +186,9 @@
 			<Setter.Value>
 				<Image Source="ms-appx:///Assets/more.scale-100.png"
 					   Stretch="None"
+					   wasm:Width="21"
 					   HorizontalAlignment="Center"
-					   VerticalAlignment="Center"
-					   wasm:Width="21" />
+					   VerticalAlignment="Center" />
 			</Setter.Value>
 		</wasm:Setter>
 	</Style>

@@ -38,8 +38,8 @@
 						</VisualStateManager.VisualStateGroups>
 
 						<Border x:Name="BackgroundBorder"
-								CornerRadius="10"
 								Background="{TemplateBinding Background}"
+								CornerRadius="10"
 								Width="{TemplateBinding Width}"
 								Height="{TemplateBinding Height}">
 							<ContentPresenter Content="{TemplateBinding Content}"
@@ -108,12 +108,12 @@
 						</VisualStateManager.VisualStateGroups>
 
 						<ContentPresenter x:Name="ContentPresenter"
+										  Content="{TemplateBinding Content}"
 										  ContentTemplate="{TemplateBinding ContentTemplate}"
 										  ContentTransitions="{TemplateBinding ContentTransitions}"
-										  Content="{TemplateBinding Content}"
 										  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-										  Margin="{TemplateBinding Padding}"
-										  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+										  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+										  Margin="{TemplateBinding Padding}" />
 					</Border>
 				</ControlTemplate>
 			</Setter.Value>

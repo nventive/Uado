@@ -6,10 +6,10 @@
 						  xmlns:cnv="using:Uno.AzureDevOps.Views.Converters"
 						  xmlns:controls="using:Uno.AzureDevOps.Views.Controls"
 						  xmlns:toolkit="using:Uno.UI.Toolkit"
-						  mc:Ignorable="d"
+						  x:Name="HeaderControl"
 						  d:DesignHeight="115"
 						  d:DesignWidth="800"
-						  x:Name="HeaderControl">
+						  mc:Ignorable="d">
 
 	<controls:UadoUserControl.Resources>
 		<cnv:FromHeaderModeToValueConverter x:Key="HeaderModeToHeight"
@@ -45,24 +45,26 @@
 		</VisualStateManager.VisualStateGroups>
 
 		<!-- CommandBar -->
-		<!-- We use the FullscreenSideMenuBehavior to manage the visibility of
-			 the CommandBar based on when the side menu opens (narrow-view only) -->
+		<!--
+			We use the FullscreenSideMenuBehavior to manage the visibility of
+			the CommandBar based on when the side menu opens (narrow-view only)
+		-->
 		<CommandBar x:Name="PART_CommandBarView"
 					Content="{Binding Title, ElementName=HeaderControl}">
 			<CommandBar.PrimaryCommands>
-				<!-- Hamburger Button  -->
+				<!-- Hamburger Button -->
 				<AppBarButton x:Name="HamburgerButton"
+							  Style="{StaticResource BurgerMenuButtonStyle}"
 							  Click="HamburgerButton_Click"
-							  Visibility="{Binding HamburgerMenuVisibility, ElementName=HeaderControl}"
-							  Style="{StaticResource BurgerMenuButtonStyle}">
+							  Visibility="{Binding HamburgerMenuVisibility, ElementName=HeaderControl}">
 				</AppBarButton>
 			</CommandBar.PrimaryCommands>
 		</CommandBar>
 
 		<Border x:Name="LargeHeaderContainer"
-				MinHeight="{Binding Mode, ElementName=HeaderControl, Converter={StaticResource HeaderModeToHeight}}"
 				Background="{StaticResource Color03Brush}"
 				Visibility="Collapsed"
+				MinHeight="{Binding Mode, ElementName=HeaderControl, Converter={StaticResource HeaderModeToHeight}}"
 				toolkit:VisibleBoundsPadding.PaddingMask="Top">
 			<Grid VerticalAlignment="Center"
 				  Margin="0,0,112,0">
@@ -73,12 +75,12 @@
 				</Grid.ColumnDefinitions>
 
 				<!-- Back Button -->
-				<Button Command="{Binding BackCommand, ElementName=HeaderControl}"
+				<Button Style="{StaticResource BasicEmptyButtonStyle}"
+						Command="{Binding BackCommand, ElementName=HeaderControl}"
+						Visibility="{Binding Mode, ElementName=HeaderControl, Converter={StaticResource MinimalToVisible}}"
 						MinHeight="40"
 						MaxWidth="225"
-						Margin="16,0,0,5"
-						Style="{StaticResource BasicEmptyButtonStyle}"
-						Visibility="{Binding Mode, ElementName=HeaderControl, Converter={StaticResource MinimalToVisible}}">
+						Margin="16,0,0,5">
 					<Grid VerticalAlignment="Center">
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="Auto" />
@@ -89,10 +91,10 @@
 
 						<TextBlock Style="{StaticResource Typo19}"
 								   FontSize="12"
-								   Grid.Column="1"
-								   Margin="12,0,0,0"
 								   TextWrapping="NoWrap"
-								   TextTrimming="CharacterEllipsis">
+								   TextTrimming="CharacterEllipsis"
+								   Margin="12,0,0,0"
+								   Grid.Column="1">
 							<Run Text="Back to " />
 							<Run Text="{Binding BackCaption, ElementName=HeaderControl}" />
 						</TextBlock>
@@ -110,9 +112,9 @@
 					<!-- Initials -->
 					<Grid Background="{StaticResource Color02Brush}"
 						  CornerRadius="10"
-						  Height="55"
+						  Visibility="{Binding ProjectInitialsVisibility, ElementName=HeaderControl}"
 						  Width="55"
-						  Visibility="{Binding ProjectInitialsVisibility, ElementName=HeaderControl}">
+						  Height="55">
 						<TextBlock x:Name="Initials"
 								   Text="{Binding Title, ElementName=HeaderControl, Converter={StaticResource MemberInitials}}"
 								   Style="{StaticResource ProjectInitialsTextBlock}"
@@ -123,25 +125,25 @@
 					<!-- Title (Large) -->
 					<TextBlock Text="{Binding Title, ElementName=HeaderControl}"
 							   Style="{StaticResource ProjectInitialsTextBlock}"
-							   Margin="12,0,0,0"
 							   FontSize="36"
-							   Grid.Column="1"
-							   HorizontalAlignment="Left"
-							   TextTrimming="CharacterEllipsis"
 							   TextWrapping="NoWrap"
-							   Visibility="{Binding Mode, ElementName=HeaderControl, Converter={StaticResource LargeToVisible}}" />
+							   TextTrimming="CharacterEllipsis"
+							   Visibility="{Binding Mode, ElementName=HeaderControl, Converter={StaticResource LargeToVisible}}"
+							   HorizontalAlignment="Left"
+							   Margin="12,0,0,0"
+							   Grid.Column="1" />
 				</Grid>
 
 				<!-- Title (Minimal) -->
 				<TextBlock Text="{Binding Title, ElementName=HeaderControl}"
 						   Style="{StaticResource ProjectInitialsTextBlock}"
-						   Grid.ColumnSpan="2"
 						   FontSize="16"
+						   TextWrapping="NoWrap"
+						   TextTrimming="CharacterEllipsis"
+						   Visibility="{Binding Mode, ElementName=HeaderControl, Converter={StaticResource MinimalToVisible}}"
 						   HorizontalAlignment="Center"
 						   VerticalAlignment="Center"
-						   TextTrimming="CharacterEllipsis"
-						   TextWrapping="NoWrap"
-						   Visibility="{Binding Mode, ElementName=HeaderControl, Converter={StaticResource MinimalToVisible}}" />
+						   Grid.ColumnSpan="2" />
 			</Grid>
 		</Border>
 	</Grid>

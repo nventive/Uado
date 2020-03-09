@@ -20,6 +20,6 @@
 		<ResourceDictionary Source="ProgressRing.xaml" />
 		<ResourceDictionary Source="RadioButton.xaml" />
 		<ResourceDictionary Source="TextBlock.xaml" />
-		<ResourceDictionary Source="UnoWebView.xaml" /> 
+		<ResourceDictionary Source="UnoWebView.xaml" />
 	</ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

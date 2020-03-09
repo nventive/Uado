@@ -1,8 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 					xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 					xmlns:android="http://nventive.com/android"
-					mc:Ignorable="android"
-					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+					mc:Ignorable="android">
 
 	<Style x:Key="DefaultHyperlinkButtonStyle"
 		   TargetType="HyperlinkButton">
@@ -60,28 +60,28 @@
 								<VisualState x:Name="PointerFocused" />
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
-						
+
 						<Grid x:Name="Content"
 							  MinHeight="{TemplateBinding MinHeight}"
-							  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
 							  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+							  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
 							  Margin="{TemplateBinding Padding}">
 
 							<ContentPresenter x:Name="ContentPresenter"
-											  AutomationProperties.AccessibilityView="Raw"
+											  TextWrapping="Wrap"
+											  Content="{TemplateBinding Content}"
 											  ContentTemplate="{TemplateBinding ContentTemplate}"
 											  ContentTransitions="{TemplateBinding ContentTransitions}"
-											  Content="{TemplateBinding Content}"
 											  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
 											  VerticalAlignment="Top"
-											  TextWrapping="Wrap"/>
+											  AutomationProperties.AccessibilityView="Raw" />
 						</Grid>
 					</Grid>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
 	</Style>
-	
+
 	<Style TargetType="HyperlinkButton"
 		   BasedOn="{StaticResource DefaultHyperlinkButtonStyle}" />
 

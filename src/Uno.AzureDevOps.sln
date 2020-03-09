@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.539
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Uno.AzureDevOps", "Uno.AzureDevOps\Uno.AzureDevOps.Shared\Uno.AzureDevOps.shproj", "{6279C845-92F8-4333-AB99-3D213163593C}"
 EndProject
@@ -25,6 +25,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\.gitignore = ..\.gitignore
 		Packaging.targets = Packaging.targets
 		Versioning.targets = Versioning.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XAML Styler", "XAML Styler", "{4336C1EE-B6C2-4F89-A877-4405C51DF208}"
+	ProjectSection(SolutionItems) = preProject
+		XamlStyler\FormatAllFiles.ps1 = XamlStyler\FormatAllFiles.ps1
+		settings.xamlstyler = settings.xamlstyler
 	EndProjectSection
 EndProject
 Global
@@ -302,6 +308,7 @@ Global
 		{64446A97-E749-4F29-8BBA-BC26151B2CE1} = {0B430733-FA30-45AA-A3EE-D9118BB9DFF1}
 		{82D129C9-82B4-4D68-96FB-95F22BE36129} = {0B430733-FA30-45AA-A3EE-D9118BB9DFF1}
 		{BB7A72B6-71C2-41C1-B408-8C65A5456A7D} = {0B430733-FA30-45AA-A3EE-D9118BB9DFF1}
+		{4336C1EE-B6C2-4F89-A877-4405C51DF208} = {74582D4F-C68B-4B3B-AB14-C2BAB15AA867}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3D6AD386-598D-4D98-9755-9CD1A29CAADA}

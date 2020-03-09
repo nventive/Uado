@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 					xmlns:local="using:Uno.AzureDevOps.Views.Styles.Controls">
-	
+
 	<Style x:Key="DefaultListViewHeaderItemStyle"
 		   TargetType="ListViewHeaderItem">
 
@@ -27,12 +27,12 @@
 							BorderBrush="{TemplateBinding BorderBrush}"
 							BorderThickness="{TemplateBinding BorderThickness}">
 						<ContentPresenter x:Name="ContentPresenter"
-										  Margin="{TemplateBinding Padding}"
 										  Content="{TemplateBinding Content}"
 										  ContentTemplate="{TemplateBinding ContentTemplate}"
 										  ContentTransitions="{TemplateBinding ContentTransitions}"
 										  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-										  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+										  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+										  Margin="{TemplateBinding Padding}" />
 					</Border>
 				</ControlTemplate>
 			</Setter.Value>

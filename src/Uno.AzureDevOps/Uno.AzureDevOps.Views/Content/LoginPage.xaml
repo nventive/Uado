@@ -1,26 +1,26 @@
 ﻿<Page x:Class="Uno.AzureDevOps.Views.Content.LoginPage"
 	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	  xmlns:controls="using:Uno.AzureDevOps.Views.Controls"
 	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	  xmlns:controls="using:Uno.AzureDevOps.Views.Controls"
 	  xmlns:wasm="http://nventive.com/wasm"
 	  mc:Ignorable="wasm">
 
 	<Grid>
 
 		<!-- Loading State -->
-		<Grid Visibility="{Binding IsAuthenticating.IsExecuting, Converter={StaticResource TrueToVisible}, FallbackValue=Collapsed}"
-			  Background="{StaticResource Color02Brush}">
+		<Grid Background="{StaticResource Color02Brush}"
+			  Visibility="{Binding IsAuthenticating.IsExecuting, Converter={StaticResource TrueToVisible}, FallbackValue=Collapsed}">
 
-			<StackPanel VerticalAlignment="Center"
-						HorizontalAlignment="Center">
+			<StackPanel HorizontalAlignment="Center"
+						VerticalAlignment="Center">
 
 				<!-- Progress Ring -->
 				<ProgressRing x:Name="StatusRing"
-							  IsActive="{Binding IsAuthenticating.IsExecuting}"
 							  Foreground="{StaticResource Color03Brush}"
-							  Height="20"
+							  IsActive="{Binding IsAuthenticating.IsExecuting}"
 							  Width="20"
+							  Height="20"
 							  HorizontalAlignment="Center"
 							  VerticalAlignment="Center"
 							  Margin="0,12" />
@@ -33,21 +33,21 @@
 		</Grid>
 
 		<!-- Error State -->
-		<Grid Visibility="{Binding IsAuthenticating.IsFaulted, Converter={StaticResource TrueToVisible}, FallbackValue=Collapsed}"
-			  Background="{StaticResource Color07Brush}">
+		<Grid Background="{StaticResource Color07Brush}"
+			  Visibility="{Binding IsAuthenticating.IsFaulted, Converter={StaticResource TrueToVisible}, FallbackValue=Collapsed}">
 
 			<!-- Message -->
 			<TextBlock Text="{Binding IsAuthenticating.IsInternetFaulted, Converter={StaticResource BoolToCustomString}}"
 					   Style="{StaticResource Typo10}"
+					   TextAlignment="Center"
 					   HorizontalAlignment="Center"
 					   VerticalAlignment="Center"
-					   TextAlignment="Center"
 					   Margin="0,0,0,48" />
 
 			<!-- Reload button -->
-			<Button Content="Reload"
+			<Button Style="{StaticResource ReloadButtonStyle}"
+					Content="Reload"
 					Command="{Binding ReloadPage}"
-					Style="{StaticResource ReloadButtonStyle}"
 					VerticalAlignment="Bottom"
 					Margin="16,22" />
 		</Grid>
@@ -64,9 +64,9 @@
 						   Height="155" />
 
 					<!-- Login Button -->
-					<Button Content="Login"
+					<Button Style="{StaticResource SecondaryButtonStyle}"
+							Content="Login"
 							Command="{Binding ReloadPageCommand}"
-							Style="{StaticResource SecondaryButtonStyle}"
 							Width="288"
 							HorizontalAlignment="Center"
 							Margin="0,46,0,170" />
@@ -77,7 +77,7 @@
 
 				</StackPanel>
 			</wasm:Grid>
-			
+
 			<!-- Login Webview -->
 			<controls:UnoWebView IsClearCacheAndCookies="True"
 								 NavigatedUri="{Binding NavigatedUri, Mode=TwoWay}"
