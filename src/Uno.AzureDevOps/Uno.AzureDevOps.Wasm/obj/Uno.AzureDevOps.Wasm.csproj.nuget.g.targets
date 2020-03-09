@@ -5,10 +5,10 @@
   </PropertyGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)uno.wasm.bootstrap\1.0.0-dev.265\build\Uno.Wasm.Bootstrap.targets" Condition="Exists('$(NuGetPackageRoot)uno.wasm.bootstrap\1.0.0-dev.265\build\Uno.Wasm.Bootstrap.targets')" />
-    <Import Project="$(NuGetPackageRoot)uno.sourcegenerationtasks\1.31.0-dev.285\build\netstandard1.0\Uno.SourceGenerationTasks.targets" Condition="Exists('$(NuGetPackageRoot)uno.sourcegenerationtasks\1.31.0-dev.285\build\netstandard1.0\Uno.SourceGenerationTasks.targets')" />
-    <Import Project="$(NuGetPackageRoot)uno.core.build\1.28.0-dev.86\build\Uno.Core.Build.targets" Condition="Exists('$(NuGetPackageRoot)uno.core.build\1.28.0-dev.86\build\Uno.Core.Build.targets')" />
+    <Import Project="$(NuGetPackageRoot)uno.sourcegenerationtasks\1.32.0-dev.297\build\netstandard1.0\Uno.SourceGenerationTasks.targets" Condition="Exists('$(NuGetPackageRoot)uno.sourcegenerationtasks\1.32.0-dev.297\build\netstandard1.0\Uno.SourceGenerationTasks.targets')" />
+    <Import Project="$(NuGetPackageRoot)uno.core.build\1.29.0-dev.93\build\Uno.Core.Build.targets" Condition="Exists('$(NuGetPackageRoot)uno.core.build\1.29.0-dev.93\build\Uno.Core.Build.targets')" />
     <Import Project="C:\Program Files\dotnet\sdk\NuGetFallbackFolder\netstandard.library\2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('C:\Program Files\dotnet\sdk\NuGetFallbackFolder\netstandard.library\2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
-    <Import Project="$(NuGetPackageRoot)uno.ui\1.45.0-dev.1813\build\netstandard2.0\uno.ui.targets" Condition="Exists('$(NuGetPackageRoot)uno.ui\1.45.0-dev.1813\build\netstandard2.0\uno.ui.targets')" />
-    <Import Project="$(NuGetPackageRoot)microsoft.typescript.msbuild\3.6.3\build\Microsoft.TypeScript.MSBuild.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.typescript.msbuild\3.6.3\build\Microsoft.TypeScript.MSBuild.targets')" />
+    <Import Project="$(NuGetPackageRoot)uno.ui\2.0.530\build\netstandard2.0\uno.ui.targets" Condition="Exists('$(NuGetPackageRoot)uno.ui\2.0.530\build\netstandard2.0\uno.ui.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.typescript.msbuild\3.6.4\build\Microsoft.TypeScript.MSBuild.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.typescript.msbuild\3.6.4\build\Microsoft.TypeScript.MSBuild.targets')" />
   </ImportGroup>
 </Project>

@@ -343,6 +343,7 @@
 								  Margin="0,0,0,20">
 								<StackPanel Spacing="16">
 									<TextBlock Text="About this project"
+											   FontSize="40"
 											   Style="{StaticResource Typo22}" />
 
 									<TextBlock TextWrapping="Wrap"
